@@ -11,7 +11,7 @@ class Artikel extends Model
 
     protected $table = 'artikel';
     
-    public function author()
+    public function user()
     {
         return $this->hasOne(User::class, 'id', 'id_user');
     }

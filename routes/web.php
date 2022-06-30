@@ -21,3 +21,14 @@ Route::get('doLogin', [App\Http\Controllers\AuthController::class, 'login'])->na
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(['middleware' => ['role:admin']], function () {
+
+  
+  // kelola artikel
+  Route::get('article', [App\Http\Controllers\ArtikelController::class, 'index'])->name('article');
+  Route::post('article.updateOrInsert', [App\Http\Controllers\ArtikelController::class, 'updateOrInsert'])->name('article.updateOrInsert');
+  Route::post('article.delete', [App\Http\Controllers\ArtikelController::class, 'delete'])->name('article.delete');
+  Route::get('getArticleByID/{id}', [App\Http\Controllers\ArtikelController::class, 'getarticleByID'])->name('getarticleByID');
+});

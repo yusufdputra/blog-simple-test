@@ -14,7 +14,9 @@ class HomeController extends Controller
         $data['title'] = "Selamat datang di blog sederhana";
         // cek role
         if (Auth::check()) {
-            return view('admin.home', compact('data'));
+
+            $data['articles'] = Artikel::where('id_user', Auth::user()->id)->get();
+            return view('admin.index', compact('data'));
         }
 
         $data['articles'] = Artikel::all();

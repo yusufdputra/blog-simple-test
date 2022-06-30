@@ -20,7 +20,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('doLogin', [App\Http\Controllers\AuthController::class, 'login'])->name('doLogin');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('article/detail/{id}', [App\Http\Controllers\ArtikelController::class, 'detail'])->name('article.detail');
 
 
 Route::group(['middleware' => ['role:admin']], function () {

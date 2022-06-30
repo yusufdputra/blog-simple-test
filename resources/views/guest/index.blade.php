@@ -37,7 +37,7 @@
 
         <ul class="nav navbar-nav ml-auto mr-0">
           <li class="nav-item">
-            <a href="{{route('doLogin')}}" class="nav-link" data-toggle="tooltip" data-title="Login" data-placement="bottom" data-boundary="window"><i class="material-icons">lock_open</i></a>
+            <a href="{{route('login')}}" class="nav-link" data-toggle="tooltip" data-title="Login" data-placement="bottom" data-boundary="window"><i class="material-icons">lock_open</i></a>
           </li>
           <!-- <li class="nav-item">
               <a href="https://wa.link/k4o0hk" class="btn btn-outline-white">Get Started</a>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="posts-card-popular__title card-body">
                   <small class="text-muted text-uppercase">{{$value->title}}</small>
-                  <a class="card-title two-lines" href="fixed-blog-post.html">{{$value->detail}}</a>
+                  <a class="card-title two-lines" href="{{route('article.detail', Crypt::encrypt($value->id))}}">{{$value->detail}}</a>
                 </div>
               </div>
             </div>

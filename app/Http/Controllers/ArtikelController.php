@@ -12,7 +12,7 @@ class ArtikelController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['detail']);
     }
 
     public function index()
@@ -116,4 +116,14 @@ class ArtikelController extends Controller
         }
     }
 
+
+    public function detail($id_article)
+    {
+        $id = Crypt::decrypt($id_article);
+
+        $data['articles'] = Artikel::whereNotIn('id', [$id])->get();
+        $data['article'] = Artikel::with('user')->where('id', $id)->first();
+
+        return view('guest.detail', compact('data'));
+    }
 }
